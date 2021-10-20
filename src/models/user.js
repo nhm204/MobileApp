@@ -51,7 +51,8 @@ userSchema.pre("save", async function (next) {
 
 userSchema.statics.login = async (email, password) => {
   // Tìm xem trong database có user nào có email giống như email đang đăng nhập.
-  const user = await User.findOne({ email });
+  const User = await user.findOne({ email });
+
   // Nếu như không có user thì mình trả về là null.
 
   // undefined , null , NaN => false,
@@ -59,19 +60,19 @@ userSchema.statics.login = async (email, password) => {
   // false
   // ! toán tử not. true => !true = false , false => !false = true
 
-  if (!user) {
+  if (!User) {
     return null;
   }
 
   // Mình đi so sánh password để xem có đúng password hay hongg.
-  const isMatch = await bcrypt.compare(password, user.password);
+  const isMatch = await bcrypt.compare(password, User.password);
 
   // Nếu hong đúng thì mình cũng trả về null.
   if (!isMatch) {
     return null;
   }
   // Nếu đúng thì mình sẽ trả về user.
-  return user;
+  return User;
 };
 
 userSchema.methods.generateToken = async function () {
