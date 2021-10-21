@@ -1,6 +1,8 @@
 // import libs to use
 const express = require("express");
 const useragent = require("express-useragent");
+const path = require("path");
+const handlebars = require("express-handlebars");
 const logger = require("./utils/winston");
 const log = require("./middleware/Log");
 const route = require("./route");
@@ -10,6 +12,7 @@ require("./db/mongo");
 // create server
 const app = express();
 
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(useragent.express());
 app.use(log);
@@ -18,6 +21,19 @@ app.use(log);
 
 // shorter way
 app.use(route);
+
+// set view engine
+app.engine(
+  'hbs',
+  handlebars({
+      extname: '.hbs',
+  }),
+);
+
+app.set('view engine', 'hbs');
+
+app.set('views', path.join(__dirname, 'public'));
+
 
 // start server
 app.listen(3000, function () {

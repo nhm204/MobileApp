@@ -1,12 +1,15 @@
 const express = require("express");
 const { userController } = require("../controller");
+const pug = require("pug");
 const auth = require("../middleware/Auth");
 
 const router = new express.Router();
 
-router.get("/", function (req, res) {
-  res.send("Iu vo nhieu");
+// landing page
+router.get('/', (req, res) => {
+    res.render("views/home");
 });
+
 // for user
 router.post("/user", userController.createUser);
 
