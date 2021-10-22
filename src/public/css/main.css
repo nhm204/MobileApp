@@ -20,7 +20,7 @@ body {
   position: absolute;
   top: 30px;
   left: 50px;
-  text-shadow: 15px 15px 0px rgba(0, 0, 0, 1);
+  /* text-shadow: 15px 15px 0px rgba(0, 0, 0, 1); */
   font-family: Rubik Mono One;
   font-weight: Regular;
   font-size: 70px;
@@ -31,12 +31,12 @@ body {
   width: 100%;
   color: rgba(255,228,107,1);
   position: absolute;
-  top: 125px;
+  top: 105px;
   left: 50px;
   text-shadow: 15px 15px 0px rgba(0, 0, 0, 1);
   font-family: Rubik Mono One;
   font-weight: Regular;
-  font-size: 90px;
+  font-size: 95px;
   opacity: 1;
   text-align: left;
 }
@@ -44,11 +44,11 @@ body {
   width: 503px;
   color: rgba(63,67,255,1);
   position: absolute;
-  bottom: 25px;
+  bottom: 20px;
   left: 50px;
   font-family: 'Calibri';
   font-weight: bold;
-  font-size: 27px;
+  font-size: 17px;
   opacity: 1;
   text-align: left;
 }
@@ -61,7 +61,44 @@ body {
   background-size: cover;
   opacity: 1;
   position: absolute;
-  bottom: 25px;
-  right: 70px;
+  bottom: 10px;
+  right: 50px;
   overflow: hidden;
 }
+.brief {
+  width: 100%;
+  color: rgba(255,255,255,1);
+  position: absolute;
+  top: 225px;
+  left: 60px;
+  font-family: 'Calibri';
+  font-weight: bold;
+  font-size: 30px;
+  opacity: 1;
+  text-align: left;
+}
+.intro {
+  width: 100%;
+  color: rgb(0, 0, 0);
+  position: absolute;
+  top: 330px;
+  left: 60px;
+  font-family: 'Calibri';
+  font-weight: bold;
+  font-size: 27px;
+  opacity: 1;
+  text-align: left;
+}
+.list {
+  width: 100%;
+  color: rgb(0, 0, 0);
+  position: absolute;
+  top: 340px;
+  left: 60px;
+  font-family: 'Calibri';
+  font-weight: bold;
+  font-size: 27px;
+  opacity: 1;
+  text-align: left;
+}
+
