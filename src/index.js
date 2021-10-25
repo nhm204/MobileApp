@@ -17,10 +17,9 @@ app.use(express.json());
 app.use(useragent.express());
 app.use(log);
 
-// create api
 
 // shorter way
-app.use(route);
+app.use("/api/v1", route);
 
 // set view engine
 app.engine(
