@@ -16,8 +16,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(useragent.express());
 app.use(log);
-
-
+// landing page
+app.get('/', (req, res) => {
+  res.render("views/home");
+});
 // shorter way
 app.use("/api/v1", route);
 
