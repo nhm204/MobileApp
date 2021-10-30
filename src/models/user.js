@@ -26,14 +26,18 @@ const userSchema = new mongoose.Schema(
       type: Number,
       unique: true,
     },
-    favoriteHotels:[{
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "hotel",
-    }],
-    bookedHotels:[{
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "booking",
-    }]
+    favoriteHotels: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "hotel",
+      },
+    ],
+    bookedHotels: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "booking",
+      },
+    ],
   },
   {
     timestamps: true,

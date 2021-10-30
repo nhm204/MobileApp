@@ -1,4 +1,5 @@
 const db = require("../models");
+const dataConfig = require("../utils/dataConfig");
 
 class destinationService {
   async createDestinationService(req, res) {
@@ -30,14 +31,26 @@ class destinationService {
       return res.status(400).send({ message: e });
     }
   }
-  
-  async getDestinationService(req, res){
-      try{
-        const destinations = await db.destination.find();
-        return res.status(200).send(destinations);
-      } catch (e){
-        return res.status(400).send({ message: e });
+
+  async getDestinationService(req, res) {
+    try {
+      const page = req.query.page;
+      if (!page) {
+        return res.status(400).send({ message: "Please enter page!" });
       }
+      // get destination
+      const destinations = await db.destination
+        .find()
+        // limit by 5 records a page
+        .limit(5)
+        // skip records to another page
+        .skip((page - 1) * 5);
+      // pagination
+      const pagination = await dataConfig.pagination("destination", page, {});
+      return res.status(200).send({ destinations, pagination });
+    } catch (e) {
+      return res.status(400).send({ message: e });
+    }
   }
 }
 

@@ -2,23 +2,23 @@ const mongoose = require("mongoose");
 
 const reviewSchema = new mongoose.Schema(
   {
-    author:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
+    author: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
     },
     time: {
-        type: String,
+      type: String,
     },
-    rating:{
-        type: Number
+    rating: {
+      type: Number,
     },
-    content:{
-        type: String,
+    content: {
+      type: String,
     },
-    hotelReview:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "hotel",
-    }
+    hotelReview: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "hotel",
+    },
   },
   {
     timestamps: true,

@@ -2,39 +2,39 @@ const mongoose = require("mongoose");
 
 const bookingSchema = new mongoose.Schema(
   {
-    user:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "user"
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "user",
     },
-    bookingId:{
-        type: Number,
+    bookingId: {
+      type: Number,
     },
-    room:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "room"
+    room: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "room",
     },
-    checkInDate:{
-        type: Date,
+    checkInDate: {
+      type: Date,
     },
-    checkOutDate:{
-        type: Date,
+    checkOutDate: {
+      type: Date,
     },
-    price:{
-        type: Number,
+    price: {
+      type: Number,
     },
-    vat:{
-        type: Number,
+    vat: {
+      type: Number,
     },
-    couponApplied:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "coupon"
+    couponApplied: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "coupon",
     },
-    finalPrice:{
-        type: Number,
+    finalPrice: {
+      type: Number,
     },
-    isPaid:{
-        type: Boolean,
-    }
+    isPaid: {
+      type: Boolean,
+    },
   },
   {
     timestamps: true,

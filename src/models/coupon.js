@@ -2,18 +2,18 @@ const mongoose = require("mongoose");
 
 const couponSchema = new mongoose.Schema(
   {
-    percent:{
-        type: Number
+    percent: {
+      type: Number,
     },
-    maximum:{
-        type: Number,
+    maximum: {
+      type: Number,
     },
-    minimum:{
-        type: Number,
+    minimum: {
+      type: Number,
     },
-    appliedHotel:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "hotel"
+    appliedHotel: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "hotel",
     },
   },
   {

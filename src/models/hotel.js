@@ -10,56 +10,64 @@ const hotelSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    thumbnails:[{
+    thumbnails: [
+      {
         type: String,
-    }],
-    location:{
-        type: String,
+      },
+    ],
+    location: {
+      type: String,
     },
-    description:{
-        type: String,
+    description: {
+      type: String,
     },
-    shortDescription:{
-        type: String,
+    shortDescription: {
+      type: String,
     },
-    price:{
-        type: Number,
+    price: {
+      type: Number,
     },
-    gallery:[{
+    gallery: [
+      {
         type: String,
-    }],
-    listOfRooms:[{
+      },
+    ],
+    listOfRooms: [
+      {
         type: mongoose.Schema.Types.ObjectId,
         ref: "room",
-    }],
-    reviews:[{
+      },
+    ],
+    reviews: [
+      {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "review"
-    }],
-    rating:{
-        averageRating:{
-            type: Number,
-        },
-        quality:{
-            type: String,
-            enum:["Excellent","Good","Normal","Bad","Very bad"]
-        },
-        fiveStar:{
-            type: Number,
-        },
-        fourStar:{
-            type: Number,
-        },
-        threeStar:{
-            type: Number,
-        },
-        twoStar:{
-            type: Number,
-        },
-        oneStar:{
-            type: Number,
-        }
-    }
+        ref: "review",
+      },
+    ],
+    rating: {
+      averageRating: {
+        type: Number,
+      },
+      quality: {
+        type: String,
+        enum: ["Excellent", "Good", "Normal", "Bad", "Very bad"],
+      },
+      fiveStar: {
+        type: Number,
+      },
+      fourStar: {
+        type: Number,
+      },
+      threeStar: {
+        type: Number,
+      },
+      twoStar: {
+        type: Number,
+      },
+      oneStar: {
+        type: Number,
+      },
+    },
   },
   {
     timestamps: true,

@@ -5,11 +5,6 @@ const auth = require("../middleware/Auth");
 
 const router = new express.Router();
 
-// landing page
-router.get('/', (req, res) => {
-    res.render("views/home");
-});
-
 // for user
 router.post("/user", userController.createUser);
 

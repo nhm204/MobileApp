@@ -7,7 +7,7 @@ body {
 .v101_3 {
   width: 100%;
   height: 100%;
-  background: linear-gradient(rgba(128,145,255,1), rgba(128,145,255,0));
+  background: linear-gradient(rgba(128, 145, 255, 1), rgba(128, 145, 255, 0));
   opacity: 1;
   position: absolute;
   top: 0px;
@@ -16,7 +16,7 @@ body {
 }
 .v101_2 {
   width: 100%;
-  color: rgba(255,255,255,1);
+  color: rgba(255, 255, 255, 1);
   position: absolute;
   top: 30px;
   left: 50px;
@@ -29,7 +29,7 @@ body {
 }
 .v101_4 {
   width: 100%;
-  color: rgba(255,228,107,1);
+  color: rgba(255, 228, 107, 1);
   position: absolute;
   top: 105px;
   left: 50px;
@@ -42,11 +42,11 @@ body {
 }
 .v101_5 {
   width: 503px;
-  color: rgba(63,67,255,1);
+  color: rgba(63, 67, 255, 1);
   position: absolute;
   bottom: 20px;
   left: 50px;
-  font-family: 'Calibri';
+  font-family: "Calibri";
   font-weight: bold;
   font-size: 17px;
   opacity: 1;
@@ -67,11 +67,11 @@ body {
 }
 .brief {
   width: 100%;
-  color: rgba(255,255,255,1);
+  color: rgba(255, 255, 255, 1);
   position: absolute;
   top: 225px;
   left: 60px;
-  font-family: 'Calibri';
+  font-family: "Calibri";
   font-weight: bold;
   font-size: 30px;
   opacity: 1;
@@ -83,7 +83,7 @@ body {
   position: absolute;
   top: 330px;
   left: 60px;
-  font-family: 'Calibri';
+  font-family: "Calibri";
   font-weight: bold;
   font-size: 27px;
   opacity: 1;
@@ -95,10 +95,9 @@ body {
   position: absolute;
   top: 340px;
   left: 60px;
-  font-family: 'Calibri';
+  font-family: "Calibri";
   font-weight: bold;
   font-size: 27px;
   opacity: 1;
   text-align: left;
 }
-

@@ -13,7 +13,7 @@ class destinationController {
     destinationService.updateDestinationService(req, res);
   }
 
-  getDestination(req, res){ 
+  getDestination(req, res) {
     destinationService.getDestinationService(req, res);
   }
 }

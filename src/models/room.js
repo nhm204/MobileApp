@@ -2,30 +2,30 @@ const mongoose = require("mongoose");
 
 const roomSchema = new mongoose.Schema(
   {
-    roomNumber:{
-        type: Number,
+    roomNumber: {
+      type: Number,
     },
-    typeRoom:{
-        type: String,
+    typeRoom: {
+      type: String,
     },
-    capacity:{
-        type: Number,
+    capacity: {
+      type: Number,
     },
-    maxOfAdult:{
-        type: Number,
+    maxOfAdult: {
+      type: Number,
     },
-    maxOfChildren:{
-        type: Number,
+    maxOfChildren: {
+      type: Number,
     },
-    price:{
-        type: Number,
+    price: {
+      type: Number,
     },
-    isAvailable:{
-        type: Boolean,
+    isAvailable: {
+      type: Boolean,
     },
-    availableFromDate:{
-        type: Date,
-    }
+    availableFromDate: {
+      type: Date,
+    },
   },
   {
     timestamps: true,

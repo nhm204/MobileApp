@@ -12,12 +12,12 @@ require("./db/mongo");
 // create server
 const app = express();
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(useragent.express());
 app.use(log);
 // landing page
-app.get('/', (req, res) => {
+app.get("/", (req, res) => {
   res.render("views/home");
 });
 // shorter way
@@ -25,16 +25,15 @@ app.use("/api/v1", route);
 
 // set view engine
 app.engine(
-  'hbs',
+  "hbs",
   handlebars({
-      extname: '.hbs',
-  }),
+    extname: ".hbs",
+  })
 );
 
-app.set('view engine', 'hbs');
+app.set("view engine", "hbs");
 
-app.set('views', path.join(__dirname, 'public'));
-
+app.set("views", path.join(__dirname, "public"));
 
 // start server
 app.listen(3000, function () {
