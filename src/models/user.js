@@ -26,6 +26,11 @@ const userSchema = new mongoose.Schema(
       type: Number,
       unique: true,
     },
+    currency:{
+      type: String,
+      enum:["USD","VND"],
+      default: "USD",
+    },
     favoriteHotels: [
       {
         type: mongoose.Schema.Types.ObjectId,

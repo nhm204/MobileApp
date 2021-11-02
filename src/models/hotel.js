@@ -6,15 +6,10 @@ const hotelSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    image: {
+    thumbnails: {
       type: String,
       required: true,
     },
-    thumbnails: [
-      {
-        type: String,
-      },
-    ],
     location: {
       type: String,
     },
@@ -25,7 +20,28 @@ const hotelSchema = new mongoose.Schema(
       type: String,
     },
     price: {
-      type: Number,
+      currency:{
+        type: String,
+        enum: ["USD","VND"],
+        default:"USD",
+      },
+      value:{
+        type: Number,
+      }
+    },
+    specialPrice:{
+      currency:{
+        type: String,
+        enum: ["USD","VND"],
+        default: "USD",
+      },
+      value:{
+        type: Number,
+      }
+    },
+    isOnSale:{
+      type: Boolean,
+      default: false,
     },
     gallery: [
       {
