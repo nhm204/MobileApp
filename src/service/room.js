@@ -1,57 +1,57 @@
 const db = require("../models");
 const dataConfig = require("../utils/dataConfig");
 
-class hotelService {
-  async createHotelService(req, res) {
+class roomService {
+  async createRoomService(req, res) {
     try {
-      const hotel = new db.hotel(req.body);
-      await hotel.save();
-      return res.status(201).send({ message: "Hotel created!" });
+      const room = new db.room(req.body);
+      await room.save();
+      return res.status(201).send({ message: "Room created!" });
     } catch (e) {
       return res.status(400).send({ message: e });
     }
   }
 
-  async deleteHotelService(req, res) {
-    try {
-      const query = req.query.id;
-      await db.hotel.findByIdAndDelete(query);
-      return res.send({ message: "Hotel deleted!" });
-    } catch (e) {
-      return res.status(400).send({ message: e });
-    }
-  }
-
-  async updateHotelService(req, res) {
+  async deleteRoomService(req, res) {
     try {
       const query = req.query.id;
-      await db.hotel.findByIdAndUpdate(query, req.body);
-      return res.send({ message: "hotel updated!" });
+      await db.room.findByIdAndDelete(query);
+      return res.send({ message: "Room deleted!" });
     } catch (e) {
       return res.status(400).send({ message: e });
     }
   }
 
-  async getHotelService(req, res) {
+  async updateRoomService(req, res) {
+    try {
+      const query = req.query.id;
+      await db.room.findByIdAndUpdate(query, req.body);
+      return res.send({ message: "Room updated!" });
+    } catch (e) {
+      return res.status(400).send({ message: e });
+    }
+  }
+
+  async getRoomService(req, res) {
     try {
       const page = req.query.page;
       if (!page) {
         return res.status(400).send({ message: "Please enter page!" });
       }
-      // get hotel
-      const hotels = await db.hotel
+      // get room
+      const rooms = await db.room
         .find()
         // limit by 5 records a page
         .limit(5)
         // skip records to another page
         .skip((page - 1) * 5);
       // pagination
-      const pagination = await dataConfig.pagination("hotel", page, {});
-      return res.status(200).send({ hotels, pagination });
+      const pagination = await dataConfig.pagination("room", page, {});
+      return res.status(200).send({ rooms, pagination });
     } catch (e) {
       return res.status(400).send({ message: e });
     }
   }
 }
 
-module.exports = new hotelService();
+module.exports = new roomService();

@@ -18,7 +18,14 @@ const roomSchema = new mongoose.Schema(
       type: Number,
     },
     price: {
-      type: Number,
+      value:{
+        type: Number,
+      },
+      currency:{
+        type: String,
+        enum:["USD", "VND"],
+        default: "USD",
+      },
     },
     isAvailable: {
       type: Boolean,
