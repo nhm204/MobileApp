@@ -8,9 +8,6 @@ const roomSchema = new mongoose.Schema(
     typeRoom: {
       type: String,
     },
-    capacity: {
-      type: Number,
-    },
     maxOfAdult: {
       type: Number,
     },

@@ -8,8 +8,8 @@ router.post("/room", auth, roomController.createRoom);
 
 router.get("/room", roomController.getRoom);
 
-router.put("/room", roomController.updateRoom);
+router.put("/room", auth, roomController.updateRoom);
 
-router.delete("/room", roomController.deleteRoom);
+router.delete("/room", auth, roomController.deleteRoom);
 
 module.exports = router;

@@ -5,11 +5,29 @@ const couponSchema = new mongoose.Schema(
     percent: {
       type: Number,
     },
-    maximum: {
-      type: Number,
+    maximumDiscount: {
+      price: {
+        value:{
+          type: Number,
+        },
+        currency:{
+          type: String,
+          enum:["USD", "VND"],
+          default: "USD",
+        },
+      },
     },
-    minimum: {
-      type: Number,
+    minimumInTotal: {
+      price: {
+        value:{
+          type: Number,
+        },
+        currency:{
+          type: String,
+          enum:["USD", "VND"],
+          default: "USD",
+        },
+      },
     },
     appliedHotel: {
       type: mongoose.Schema.Types.ObjectId,

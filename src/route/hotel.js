@@ -8,8 +8,8 @@ router.post("/hotel", auth, hotelController.createHotel);
 
 router.get("/hotel", hotelController.getHotel);
 
-router.put("/hotel", hotelController.updateHotel);
+router.put("/hotel", auth, hotelController.updateHotel);
 
-router.delete("/hotel", hotelController.deleteHotel);
+router.delete("/hotel", auth, hotelController.deleteHotel);
 
 module.exports = router;

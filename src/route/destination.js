@@ -8,8 +8,8 @@ router.post("/destination", auth, destinationController.createDestination);
 
 router.get("/destination", destinationController.getDestination);
 
-router.put("/destination", destinationController.updateDestination);
+router.put("/destination", auth, destinationController.updateDestination);
 
-router.delete("/destination", destinationController.deleteDestination);
+router.delete("/destination", auth, destinationController.deleteDestination);
 
 module.exports = router;
