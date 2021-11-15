@@ -48,6 +48,10 @@ const hotelSchema = new mongoose.Schema(
         type: String,
       },
     ],
+    destination:{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "destination",
+    },
     listOfRooms: [
       {
         type: mongoose.Schema.Types.ObjectId,

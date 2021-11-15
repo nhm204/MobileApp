@@ -29,6 +29,12 @@ const couponSchema = new mongoose.Schema(
         },
       },
     },
+    validFrom: {
+      type: Date,
+    },
+    validTo: {
+      type: Date,
+    },
     appliedHotel: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "hotel",

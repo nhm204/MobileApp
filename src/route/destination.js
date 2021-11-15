@@ -12,4 +12,6 @@ router.put("/destination", auth, destinationController.updateDestination);
 
 router.delete("/destination", auth, destinationController.deleteDestination);
 
+router.get("/destination/hotels", destinationController.getHotels);
+
 module.exports = router;

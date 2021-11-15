@@ -10,12 +10,6 @@ const destinationSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    listOfHotels: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Hotel",
-      },
-    ],
   },
   {
     timestamps: true,

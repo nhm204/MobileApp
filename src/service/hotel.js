@@ -52,6 +52,21 @@ class hotelService {
       return res.status(400).send({ message: e });
     }
   }
+
+  async searchHotelDestinationService(req, res) {
+    try{
+      const search = req.query.query;
+      if (!search){
+        return res.status(400).send({message: "Please provide query!"});
+      }
+      const searchHotel = await db.hotel.find({name: new RegExp(search,'gi')});
+      const searchDestination = await db.destination.find({name: new RegExp(search,'gi')});
+      const returnData = searchHotel.concat(searchDestination);
+      res.send(returnData);
+    } catch (e){
+      return res.status(400).send({ message: e });
+    }
+  }
 }
 
 module.exports = new hotelService();

@@ -16,6 +16,10 @@ class destinationController {
   getDestination(req, res) {
     destinationService.getDestinationService(req, res);
   }
+
+  getHotels(req, res){
+    destinationService.getHotelsService(req, res);
+  }
 }
 
 module.exports = new destinationController();

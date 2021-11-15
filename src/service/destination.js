@@ -1,3 +1,4 @@
+const mongoose = require("mongoose");
 const db = require("../models");
 const dataConfig = require("../utils/dataConfig");
 
@@ -48,6 +49,33 @@ class destinationService {
       // pagination
       const pagination = await dataConfig.pagination("destination", page, {});
       return res.status(200).send({ destinations, pagination });
+    } catch (e) {
+      return res.status(400).send({ message: e });
+    }
+  }
+
+  async getHotelsService(req, res) {
+    try {
+      const page = req.query.page;
+      const id = req.query.destination;
+      if (!page) {
+        return res.status(400).send({ message: "Please enter page!" });
+      }
+      if (!id){
+        return res.status(400).send({message: "Please provide destination!"})
+      }
+      const newID = new mongoose.Types.ObjectId(id.toString());
+      console.log(newID);
+      // get destination
+      const hotels = await db.hotel
+        .find({destination: newID})
+        // limit by 5 records a page
+        .limit(5)
+        // skip records to another page
+        .skip((page - 1) * 5);
+      // pagination
+      const pagination = await dataConfig.pagination("hotel", page, {destination: newID});
+      return res.status(200).send({ hotels, pagination });
     } catch (e) {
       return res.status(400).send({ message: e });
     }

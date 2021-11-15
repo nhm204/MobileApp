@@ -16,6 +16,10 @@ class hotelController {
   getHotel(req, res) {
     hotelService.getHotelService(req, res);
   }
+
+  searchHotelDestination(req, res) {
+    hotelService.searchHotelDestinationService(req, res);
+  }
 }
 
 module.exports = new hotelController();

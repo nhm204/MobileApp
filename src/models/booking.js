@@ -22,9 +22,6 @@ const bookingSchema = new mongoose.Schema(
     price: {
       type: Number,
     },
-    vat: {
-      type: Number,
-    },
     couponApplied: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "coupon",
