@@ -6,7 +6,7 @@ const auth = require("../middleware/Auth");
 const router = new express.Router();
 
 // for user
-router.post("/user", userController.createUser);
+router.post("/user/register", userController.createUser);
 
 router.delete("/user", userController.deleteUser);
 
