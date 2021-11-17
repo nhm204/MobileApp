@@ -88,6 +88,46 @@ const hotelSchema = new mongoose.Schema(
         type: Number,
       },
     },
+    FreeWifi:{
+      type: Boolean,
+      default: false,
+    },
+    SuitableForChildren:{
+      type: Boolean,
+      default: false,
+    },
+    Bathtub:{
+      type: Boolean,
+      default: false,
+    },
+    Buffet:{
+      type: Boolean,
+      default: false,
+    },
+    PetFriendly:{
+      type: Boolean,
+      default: false,
+    },
+    NonSmokingRoom:{
+      type: Boolean,
+      default: false,
+    },
+    Pool:{
+      type: Boolean,
+      default: false,
+    },
+    LaundryService:{
+      type: Boolean,
+      default: false,
+    },
+    CarPark:{
+      type: Boolean,
+      default: false,
+    },
+    FacilitiesForDisabledPeople:{
+      type:Boolean,
+      default: false,
+    }
   },
   {
     timestamps: true,

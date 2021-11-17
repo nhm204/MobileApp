@@ -15,4 +15,6 @@ router.delete("/hotel", auth, hotelController.deleteHotel);
 // search hotel & destination
 router.get("/hotel-destination", hotelController.searchHotelDestination);
 
+router.get('/hotel/best-deal', hotelController.getBestDeal);
+
 module.exports = router;

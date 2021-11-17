@@ -58,6 +58,23 @@ class userService {
       return res.status(400).send({ message: e });
     }
   }
+  // security issue - should gen a random string to verify when otp verify successfully, prevent unauthentication request
+  async resetPasswordService(req, res) {
+    try {
+      const email = req.body.email;
+      const newPassword = req.body.password;
+      const confirmPassword = req.body.confirmPassword;
+      if (newPassword != confirmPassword){
+        return res.status(400).send({message: "Password mismatch!"});
+      }
+      const user = await db.user.findOne({email});
+      user.password = newPassword;
+      await user.save();
+      return res.status(200).send({message:"Reset password successfully!"});
+    } catch (e) {
+      return res.status(400).send({ message: e });
+    }
+  }
 }
 
 module.exports = new userService();

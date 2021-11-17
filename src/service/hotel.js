@@ -62,11 +62,21 @@ class hotelService {
       const searchHotel = await db.hotel.find({name: new RegExp(search,'gi')});
       const searchDestination = await db.destination.find({name: new RegExp(search,'gi')});
       const returnData = searchHotel.concat(searchDestination);
-      res.send(returnData);
+      return res.send(returnData);
     } catch (e){
       return res.status(400).send({ message: e });
     }
   }
+
+  async getBestDealService(req, res) {
+    try{
+      const hotels = await db.hotel.find({isOnSale:true}).sort(price.value);
+      return res.send(hotels);
+    } catch (e){
+      return res.status(400).send({ message: e });
+    }
+  }
+
 }
 
 module.exports = new hotelService();

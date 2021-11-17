@@ -20,6 +20,10 @@ class userController {
   getUserProfile(req, res) {
     userService.getUserProfileService(req, res);
   }
+
+  resetPassword(req,res){
+    userService.resetPasswordService(req, res);
+  }
 }
 
 module.exports = new userController();
