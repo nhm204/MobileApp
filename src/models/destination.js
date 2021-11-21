@@ -10,17 +10,6 @@ const destinationSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    touristDestination:[{
-      image:{
-        type: String,
-      },
-      name:{
-        type: String,
-      },
-      description:{
-        type: String,
-      }
-    }]
   },
   {
     timestamps: true,

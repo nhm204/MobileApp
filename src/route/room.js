@@ -12,4 +12,6 @@ router.put("/room", auth, roomController.updateRoom);
 
 router.delete("/room", auth, roomController.deleteRoom);
 
+router.get("/room/best-deal", roomController.getBestDeal);
+
 module.exports = router;

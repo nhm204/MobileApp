@@ -16,6 +16,10 @@ class roomController {
   getRoom(req, res) {
     roomService.getRoomService(req, res);
   }
+
+  getBestDeal(req, res) {
+    roomService.getBestDealService(req, res);
+  }
 }
 
 module.exports = new roomController();

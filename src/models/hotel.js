@@ -29,16 +29,6 @@ const hotelSchema = new mongoose.Schema(
         type: Number,
       }
     },
-    specialPrice:{
-      currency:{
-        type: String,
-        enum: ["USD","VND"],
-        default: "USD",
-      },
-      value:{
-        type: Number,
-      }
-    },
     isOnSale:{
       type: Boolean,
       default: false,
@@ -52,12 +42,6 @@ const hotelSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "destination",
     },
-    listOfRooms: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "room",
-      },
-    ],
     reviews: [
       {
         type: mongoose.Schema.Types.ObjectId,

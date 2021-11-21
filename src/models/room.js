@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 
 const roomSchema = new mongoose.Schema(
   {
+    hotel:{
+      type: mongoose.Schema.Types.ObjectId,
+      ref:"hotel"
+    },
     roomNumber: {
       type: Number,
     },
@@ -24,12 +28,26 @@ const roomSchema = new mongoose.Schema(
         default: "USD",
       },
     },
+    isSale:{
+      type:Boolean
+    },
+    specialPrice:{
+      value:{
+        type: Number,
+      },
+      currency:{
+        type: String,
+        enum:["USD", "VND"],
+        default: "USD",
+      },
+    },
     isAvailable: {
       type: Boolean,
     },
-    availableFromDate: {
-      type: Date,
-    },
+    bookings:[{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "booking",
+    }]
   },
   {
     timestamps: true,

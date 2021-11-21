@@ -52,6 +52,31 @@ class roomService {
       return res.status(400).send({ message: e });
     }
   }
+
+  async getBestDealService(req, res) {
+    try {
+      const page = req.query.page;
+      if (!page) {
+        return res.status(400).send({ message: "Please enter page!" });
+      }
+      const filter = {
+        isSale: true
+      }
+      // get room
+      const rooms = await db.room
+        .find(filter)
+        // limit by 5 records a page
+        .sort(specialPrice.value)
+        .limit(5)
+        // skip records to another page
+        .skip((page - 1) * 5);
+      // pagination
+      const pagination = await dataConfig.pagination("room", page, {});
+      return res.status(200).send({ rooms, pagination });
+    } catch (e) {
+      return res.status(400).send({ message: e });
+    }
+  }
 }
 
 module.exports = new roomService();
