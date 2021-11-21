@@ -1,5 +1,6 @@
 const db = require("../models");
 const dataConfig = require("../utils/dataConfig");
+const handleQuery = require("../utils/handleQuery");
 
 class hotelService {
   async createHotelService(req, res) {
@@ -38,15 +39,17 @@ class hotelService {
       if (!page) {
         return res.status(400).send({ message: "Please enter page!" });
       }
+      const query = handleQuery.filter(req);
+      console.log(query);
       // get hotel
       const hotels = await db.hotel
-        .find()
+        .find(query)
         // limit by 5 records a page
         .limit(5)
         // skip records to another page
         .skip((page - 1) * 5);
       // pagination
-      const pagination = await dataConfig.pagination("hotel", page, {});
+      const pagination = await dataConfig.pagination("hotel", page, query);
       return res.status(200).send({ hotels, pagination });
     } catch (e) {
       return res.status(400).send({ message: e });
