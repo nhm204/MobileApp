@@ -5,7 +5,7 @@ const room = require("./room");
 const booking = require("./booking");
 const coupon = require("./coupon");
 const destination = require("./destination");
-const tips = require("./tips")
+const tips = require("./tips");
 
 module.exports = {
   user,
@@ -15,5 +15,5 @@ module.exports = {
   room,
   coupon,
   booking,
-  tips
+  tips,
 };

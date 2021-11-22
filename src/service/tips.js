@@ -47,7 +47,7 @@ class tipsService {
         .skip((page - 1) * 5);
       // pagination
       const pagination = await dataConfig.pagination("tips", page, {});
-      return res.status(200).send({ tipss, pagination });
+      return res.status(200).send({ tips, pagination });
     } catch (e) {
       return res.status(400).send({ message: e });
     }
