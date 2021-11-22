@@ -19,7 +19,17 @@ const hotelSchema = new mongoose.Schema(
     shortDescription: {
       type: String,
     },
-    price: {
+    minPrice: {
+      currency:{
+        type: String,
+        enum: ["USD","VND"],
+        default:"USD",
+      },
+      value:{
+        type: Number,
+      }
+    },
+    maxPrice: {
       currency:{
         type: String,
         enum: ["USD","VND"],
