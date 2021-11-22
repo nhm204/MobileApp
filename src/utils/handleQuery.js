@@ -18,6 +18,13 @@ class handleQuery {
         const FacilitiesForDisabledPeople= req.query.FacilitiesForDisabledPeople;
 
         // room
+        const numberOfAdult = req.query.numberOfAdult;
+        const numberOfChildren = req.query.numberOfChildren;
+        const checkInDay = req.query.checkInDay;
+        const checkOutDay = req.query.checkOutDay;đ
+        
+
+
 
         const query = {
             FreeWifi:true,
