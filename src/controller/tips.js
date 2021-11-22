@@ -2,19 +2,19 @@ const tipsService = require("../service/tips");
 
 class tipsController {
   createTips(req, res) {
-    tipsService.createtipsService(req, res);
+    tipsService.createTipsService(req, res);
   }
 
   deleteTips(req, res) {
-    tipsService.deletetipsService(req, res);
+    tipsService.deleteTipsService(req, res);
   }
 
   updateTips(req, res) {
-    tipsService.updatetipsService(req, res);
+    tipsService.updateTipsService(req, res);
   }
 
   getTips(req, res) {
-    tipsService.gettipsService(req, res);
+    tipsService.getTipsService(req, res);
   }
 }
 
