@@ -12,6 +12,9 @@ const roomSchema = new mongoose.Schema(
     typeRoom: {
       type: String,
     },
+    image: {
+      type: String,
+    },
     maxOfAdult: {
       type: Number,
     },

@@ -66,7 +66,8 @@ class roomService {
       const rooms = await db.room
         .find(filter)
         // limit by 5 records a page
-        .sort(specialPrice.value)
+        .sort("specialPrice.value")
+        .populate("hotel","location star name images rating.averageRating")
         .limit(5)
         // skip records to another page
         .skip((page - 1) * 5);

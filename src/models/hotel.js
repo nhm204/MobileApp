@@ -6,6 +6,9 @@ const hotelSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    star:{
+      type: String,
+    },
     thumbnails: {
       type: String,
       required: true,
@@ -61,6 +64,7 @@ const hotelSchema = new mongoose.Schema(
     rating: {
       averageRating: {
         type: Number,
+        default: 0,
       },
       quality: {
         type: String,
