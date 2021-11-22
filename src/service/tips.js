@@ -39,7 +39,7 @@ class tipsService {
         return res.status(400).send({ message: "Please enter page!" });
       }
       // get tips
-      const tipss = await db.tips
+      const tips = await db.tips
         .find()
         // limit by 5 records a page
         .limit(5)
