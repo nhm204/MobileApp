@@ -5,6 +5,7 @@ const coupon = require("./coupon");
 const room = require("./room");
 const review = require("./review");
 const tips = require("./tips");
+const booking = require("./booking");
 const express = require("express");
 
 const router = new express.Router();
@@ -16,5 +17,6 @@ router.use(room);
 router.use(coupon);
 router.use(review);
 router.use(tips);
+router.use(booking);
 
 module.exports = router;

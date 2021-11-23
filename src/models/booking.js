@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const AutoIncrement = require('mongoose-sequence')(mongoose);
 
 const bookingSchema = new mongoose.Schema(
   {
@@ -37,6 +38,7 @@ const bookingSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+bookingSchema.plugin(AutoIncrement,{inc_field:'bookingId'});
 
 const booking = mongoose.model("booking", bookingSchema);
 module.exports = booking;

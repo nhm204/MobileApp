@@ -6,6 +6,7 @@ const couponController = require("./coupon");
 const reviewController = require("./review");
 const otpController = require("./otp");
 const tipsController = require("./tips");
+const bookingController = require("./booking");
 
 module.exports = {
   userController,
@@ -15,5 +16,6 @@ module.exports = {
   couponController,
   reviewController,
   otpController,
-  tipsController
+  tipsController,
+  bookingController,
 };

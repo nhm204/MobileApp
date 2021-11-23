@@ -6,8 +6,7 @@ const couponSchema = new mongoose.Schema(
       type: Number,
     },
     maximumDiscount: {
-      price: {
-        value:{
+        price:{
           type: Number,
         },
         currency:{
@@ -15,11 +14,9 @@ const couponSchema = new mongoose.Schema(
           enum:["USD", "VND"],
           default: "USD",
         },
-      },
     },
     minimumInTotal: {
-      price: {
-        value:{
+        price:{
           type: Number,
         },
         currency:{
@@ -27,7 +24,6 @@ const couponSchema = new mongoose.Schema(
           enum:["USD", "VND"],
           default: "USD",
         },
-      },
     },
     validFrom: {
       type: Date,
@@ -39,6 +35,9 @@ const couponSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "hotel",
     },
+    isUsed:{
+      type: Boolean,
+    }
   },
   {
     timestamps: true,
