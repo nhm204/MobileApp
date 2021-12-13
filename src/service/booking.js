@@ -7,28 +7,12 @@ class bookingService {
    
       const booking = new db.booking(req.body);
       booking.user = req.user;
-      const checkInDate = booking.checkInDate;
-      const checkOutDate = booking.checkOutDate;
-      const verify = await db.booking.countDocuments({
-        checkInDate:{
-          $lte: new Date(checkInDate),
-        },
-        checkOutDate:{
-          $gte: new Date(checkInDate),
-        }
-      })
-      const verify1 = await db.booking.countDocuments({
-        checkInDate:{
-          $lte: new Date(checkOutDate),
-        },
-        checkOutDate:{
-          $gte: new Date(checkOutDate),
-        }
-      })
-      console.log(verify,verify1);
       await booking.save();
+      const roomId = booking.room;
+      const room = await db.room.findById(roomId);
+      room.bookings.push(booking._id);
+      await room.save();
       return res.status(201).send({ message: "booking created!" });
-   
   }
 
   async deleteBookingService(req, res) {

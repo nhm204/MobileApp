@@ -39,8 +39,8 @@ class hotelService {
       if (!page) {
         return res.status(400).send({ message: "Please enter page!" });
       }
-      const query = handleQuery.filter(req);
-      console.log(query);
+      // filter
+      const {query} = handleQuery.filter(req);
       // get hotel
       const hotels = await db.hotel
         .find(query)
@@ -71,14 +71,6 @@ class hotelService {
     }
   }
 
-  async getBestDealService(req, res) {
-    try{
-      const hotels = await db.hotel.find({isOnSale:true}).sort(price.value);
-      return res.send(hotels);
-    } catch (e){
-      return res.status(400).send({ message: e });
-    }
-  }
 
 }
 

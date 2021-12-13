@@ -19,9 +19,19 @@ class handleQuery {
 
         // room
         const numberOfAdult = req.query.numberOfAdult;
-        const numberOfChildren = req.query.numberOfChildren;
-        const checkInDay = req.query.checkInDay;
-        const checkOutDay = req.query.checkOutDay;đ
+        const checkInDate = req.query.checkInDate;
+        const roomQuery ={
+            numberOfAdult,
+            checkInDate,
+        }
+         
+        if (!numberOfAdult){
+            delete roomQuery.numberOfAdult;
+        }
+        if (!checkInDate){
+            delete roomQuery.checkInDate;
+        }
+        
         
 
 
@@ -75,7 +85,10 @@ class handleQuery {
         if (!upperPrice && !lowerPrice){
             delete query.price;
         }
-        return query;
+        return {
+            query,
+            roomQuery,
+        } 
       } catch (e){
           console.log(e);
       }

@@ -24,6 +24,9 @@ class userController {
   resetPassword(req,res){
     userService.resetPasswordService(req, res);
   }
+  getBookedRoom(req,res){
+    userService.getBookedRoomService(req, res);
+  }
 }
 
 module.exports = new userController();

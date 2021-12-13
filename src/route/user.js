@@ -28,4 +28,6 @@ router.post("/user/verify-otp", otpController.verifyOtp);
 
 router.post("/user/reset-password", userController.resetPassword);
 
+router.get("/user/booking",auth, userController.getBookedRoom);
+
 module.exports = router;

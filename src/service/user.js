@@ -75,6 +75,11 @@ class userService {
       return res.status(400).send({ message: e });
     }
   }
+  async getBookedRoomService(req, res){
+    console.log(req.user);
+    const bookings = await db.booking.find({user: req.user}).populate('room');
+    return res.status(200).send(bookings);
+  }
 }
 
 module.exports = new userService();
