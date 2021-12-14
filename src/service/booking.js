@@ -12,6 +12,12 @@ class bookingService {
       const room = await db.room.findById(roomId);
       room.bookings.push(booking._id);
       await room.save();
+      const couponId = booking.appliedCoupon;
+      if (couponId){
+        const coupon = await db.coupon.findById(couponId);
+        coupon.isUsed = true;
+        await coupon.save();
+      }
       return res.status(201).send({ message: "booking created!" });
   }
 

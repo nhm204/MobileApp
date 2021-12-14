@@ -23,7 +23,7 @@ const bookingSchema = new mongoose.Schema(
     price: {
       type: Number,
     },
-    couponApplied: {
+    appliedCoupon: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "coupon",
     },

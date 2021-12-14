@@ -52,6 +52,26 @@ class couponService {
       return res.status(400).send({ message: e });
     }
   }
+  // check for valid coupon to use or not
+  async checkValidCouponService(req, res){
+    try{
+      const code = req.query.code;
+      const hotel = req.query.hotel;
+      const coupon = await db.coupon.findOne({code});
+      if (!coupon){
+        return res.status(400).send({message: "Coupon not found!"});
+      }
+      if (coupon.appliedHotel != hotel){
+        return res.status(400).send({message: "Does not apply to this hotel!"});
+      }
+      if (coupon.isUsed){
+        return res.status(400).send({message: "Coupon has been used!"});
+      }
+      return res.status(200).send({message: "Coupon can be used!"});
+    } catch(err){
+      return res.status(400).send({message:e});
+    }
+  }
 }
 
 module.exports = new couponService();

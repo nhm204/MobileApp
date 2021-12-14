@@ -16,6 +16,10 @@ class couponController {
   getCoupon(req, res) {
     couponService.getCouponService(req, res);
   }
+
+  checkValidCoupon(req ,res){
+    couponService.checkValidCouponService(req,res);
+  }
 }
 
 module.exports = new couponController();

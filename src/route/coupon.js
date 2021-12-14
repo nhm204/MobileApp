@@ -12,4 +12,6 @@ router.put("/coupon", auth, couponController.updateCoupon);
 
 router.delete("/coupon", auth, couponController.deleteCoupon);
 
+router.get("/coupon/valid", couponController.checkValidCoupon);
+
 module.exports = router;

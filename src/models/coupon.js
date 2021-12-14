@@ -5,6 +5,9 @@ const couponSchema = new mongoose.Schema(
     value: {
       type: Number,
     },
+    code:{
+      type: String,
+    },
     validFrom: {
       type: Date,
     },
