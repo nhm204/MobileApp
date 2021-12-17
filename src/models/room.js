@@ -18,9 +18,6 @@ const roomSchema = new mongoose.Schema(
     maxOfAdult: {
       type: Number,
     },
-    maxOfChildren: {
-      type: Number,
-    },
     price: {
       value:{
         type: Number,

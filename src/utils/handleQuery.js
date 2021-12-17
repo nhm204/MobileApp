@@ -19,23 +19,37 @@ class handleQuery {
 
         // room
         const numberOfAdult = req.query.numberOfAdult;
-        const checkInDate = req.query.checkInDate;
+        const checkIn = req.query.checkInDate;
+        const checkOut = req.query.checkOutDate;
         const roomQuery ={
-            numberOfAdult,
-            checkInDate,
+            maxOfAdult:{
+                $gte: numberOfAdult,
+            },
+        }
+
+        if (!numberOfAdult){
+            delete roomQuery.maxOfAdult;
+        }
+
+        const bookingQuery = {
+            $or:[{
+                checkInDate:{
+                        $gte: checkIn,
+                        $lte: checkOut,                
+                },
+                checkOutDate:{
+                        $gte: checkIn,
+                        $lte: checkOut,                
+                }
+            }]
         }
          
         if (!numberOfAdult){
             delete roomQuery.numberOfAdult;
         }
-        if (!checkInDate){
-            delete roomQuery.checkInDate;
+        if (!checkIn || !checkOut){
+            delete bookingQuery.$or;
         }
-        
-        
-
-
-
         const query = {
             FreeWifi:true,
             SuitableForChildren: true,
@@ -88,6 +102,7 @@ class handleQuery {
         return {
             query,
             roomQuery,
+            bookingQuery,
         } 
       } catch (e){
           console.log(e);

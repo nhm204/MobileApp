@@ -39,18 +39,26 @@ class hotelService {
       if (!page) {
         return res.status(400).send({ message: "Please enter page!" });
       }
-      // filter
-      const {query} = handleQuery.filter(req);
+      const {query,roomQuery,bookingQuery} = handleQuery.filter(req);
       // get hotel
-      const hotels = await db.hotel
-        .find(query)
-        // limit by 5 records a page
-        .limit(5)
-        // skip records to another page
-        .skip((page - 1) * 5);
-      // pagination
-      const pagination = await dataConfig.pagination("hotel", page, query);
-      return res.status(200).send({ hotels, pagination });
+      const hotels = await db.hotel.find(query);
+      const rooms = await db.room.find(roomQuery);
+      const booking = await db.booking.find(bookingQuery);
+      rooms.forEach((room, index) => {
+        booking.forEach(booking => {
+          if (room.id == booking.room){
+            rooms.splice(index,1);
+          }
+        })
+      })
+      hotels.forEach((hotel, index) => {
+        rooms.forEach(room => {
+          if (hotel.id == room.hotel){
+            hotels.splice(index,1);
+          }
+        })
+      })
+      return res.status(200).send({hotels});
     } catch (e) {
       return res.status(400).send({ message: e });
     }
