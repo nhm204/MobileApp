@@ -30,4 +30,9 @@ router.post("/user/reset-password", userController.resetPassword);
 
 router.get("/user/booking",auth, userController.getBookedRoom);
 
+// favorite
+router.post("/user/favorite", auth, userController.favoriteHotel);
+
+router.get("/user/favorite", auth, userController.getFavoriteHotel);
+
 module.exports = router;

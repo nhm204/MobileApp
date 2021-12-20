@@ -19,16 +19,24 @@ class handleQuery {
 
         // room
         const numberOfAdult = req.query.numberOfAdult;
+        const numberOfChildren = req.query.numberOfChildren;
         const checkIn = req.query.checkInDate;
         const checkOut = req.query.checkOutDate;
         const roomQuery ={
             maxOfAdult:{
-                $gte: numberOfAdult,
+                $gte: parseInt(numberOfAdult),
             },
+            maxOfChildren:{
+                $gte: parseInt(numberOfChildren),
+            }
         }
 
         if (!numberOfAdult){
             delete roomQuery.maxOfAdult;
+        }
+
+        if (!numberOfChildren){
+            delete roomQuery.maxOfChildren;
         }
 
         const bookingQuery = {

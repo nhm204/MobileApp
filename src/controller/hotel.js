@@ -17,12 +17,12 @@ class hotelController {
     hotelService.getHotelService(req, res);
   }
 
-  searchHotelDestination(req, res) {
-    hotelService.searchHotelDestinationService(req, res);
+  getFilter(req, res){
+    hotelService.getFilterHotelService(req, res);
   }
 
-  getBestDeal(req, res) {
-    hotelService.getBestDealService(req, res);
+  searchHotelDestination(req, res) {
+    hotelService.searchHotelDestinationService(req, res);
   }
 }
 

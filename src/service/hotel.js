@@ -33,17 +33,23 @@ class hotelService {
     }
   }
 
-  async getHotelService(req, res) {
+  async getFilterHotelService(req, res) {
     try {
-      const page = req.query.page;
-      if (!page) {
-        return res.status(400).send({ message: "Please enter page!" });
+      const numberOfChildren = req.query.numberOfChildren;
+      const numberOfAdult = req.query.numberOfAdult;
+      const checkInDate = req.query.checkInDate;
+      const checkOutDate = req.query.checkOutDate;
+      if (!numberOfChildren || !numberOfAdult || !checkInDate || !checkOutDate){
+        return res.status(400).send({message:"Please fill all information!"});
       }
       const {query,roomQuery,bookingQuery} = handleQuery.filter(req);
       // get hotel
       const hotels = await db.hotel.find(query);
       const rooms = await db.room.find(roomQuery);
+      console.log(roomQuery);
+      console.log(rooms);
       const booking = await db.booking.find(bookingQuery);
+      // get room by booking
       rooms.forEach((room, index) => {
         booking.forEach(booking => {
           if (room.id == booking.room){
@@ -51,15 +57,36 @@ class hotelService {
           }
         })
       })
+      var returnHotels = [];
+      // get hotel by room
       hotels.forEach((hotel, index) => {
         rooms.forEach(room => {
           if (hotel.id == room.hotel){
-            hotels.splice(index,1);
+            returnHotels.push(hotel);
           }
         })
       })
-      return res.status(200).send({hotels});
+      return res.status(200).send({hotels:returnHotels});
     } catch (e) {
+      return res.status(400).send({ message: e });
+    }
+  }
+  async getHotelService (req, res) {
+    try{
+      const page = req.query.page;
+      if (!page){
+        return res.status(400).send({message:"Please enter page!"});
+      }
+      const hotels = await db.hotel
+        .find()
+        // limit by 5 records a page
+        .limit(5)
+        // skip records to another page
+        .skip((page - 1) * 5);
+      // pagination
+      const pagination = await dataConfig.pagination("hotel", page, {});
+      return res.status(200).send({hotels,pagination});
+    } catch (e){
       return res.status(400).send({ message: e });
     }
   }
@@ -78,8 +105,5 @@ class hotelService {
       return res.status(400).send({ message: e });
     }
   }
-
-
 }
-
 module.exports = new hotelService();

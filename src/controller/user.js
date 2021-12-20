@@ -27,6 +27,12 @@ class userController {
   getBookedRoom(req,res){
     userService.getBookedRoomService(req, res);
   }
+  favoriteHotel(req,res){
+    userService.addFavorite(req, res);
+  }
+  getFavoriteHotel(req,res){
+    userService.getFavorite(req, res);
+  }
 }
 
 module.exports = new userController();

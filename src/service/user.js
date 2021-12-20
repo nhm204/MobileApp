@@ -76,10 +76,44 @@ class userService {
     }
   }
   async getBookedRoomService(req, res){
-    console.log(req.user);
     const bookings = await db.booking.find({user: req.user}).populate('room');
     return res.status(200).send(bookings);
   }
+
+  async addFavorite(req, res){
+    
+      const user = await db.user.findById(req.user);
+      console.log(user.favoriteHotels)
+      const hotel = req.query.hotel;
+      if (user.favoriteHotels.length==0){
+        var favorite = [];
+        favorite.push(hotel);
+        user.favoriteHotels = favorite;
+        await user.save();
+        return res.status(200).send({message: "Added to favorite!"});
+      }
+        if (user.favoriteHotels.includes(hotel)){
+          user.favoriteHotels.forEach((favoriteHotel,index) => {
+            if(favoriteHotel == hotel){
+              user.favoriteHotels.splice(index,1);
+            }
+          })
+          await user.save();
+          return res.status(200).send({message: "Deleted from favorite!"});
+        } else {
+          user.favoriteHotels.push(hotel);
+        }
+      console.log(user);
+      await user.save();
+      return res.status(200).send({message: "Added to favorite!"});
+    
+  }
+
+  async getFavorite(req, res){
+    const user = await db.user.findById(req.user).populate("favoriteHotels");
+    return res.status(200).send({hotels: user.favoriteHotels });
+  }
+
 }
 
 module.exports = new userService();
